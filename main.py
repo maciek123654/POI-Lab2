@@ -6,7 +6,7 @@ from tkinter import filedialog
 from sklearn.cluster import KMeans
 
 
-def ransac_flat():
+def load_file():
     root = tk.Tk()
     root.withdraw()
 
@@ -19,7 +19,10 @@ def ransac_flat():
             points.append([float(row[0]), float(row[1]), float(row[2])])
 
     points = np.array(points)
+    return points
 
+
+def k_means(points):
     # Algorytm k-means
     k = 3  # Liczba klastrów
     kmeans = KMeans(n_clusters=k)
@@ -44,4 +47,4 @@ def ransac_flat():
     plt.show()
 
 
-ransac_flat()
+k_means(load_file())
